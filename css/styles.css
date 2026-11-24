@@ -254,6 +254,9 @@ img {
   padding: 0;
   margin-right: 0.75rem;
   max-width: calc(100% - 3.5rem);
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
 }
 
 .gg-navbar .navbar-brand img {
@@ -830,7 +833,21 @@ img {
 }
 
 .site-footer li + li {
-  margin-top: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.site-footer ul a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-block: 0.35rem;
+}
+
+@media (min-width: 992px) {
+  .site-footer ul a {
+    min-height: auto;
+    padding-block: 0.2rem;
+  }
 }
 
 .site-footer .social-links {

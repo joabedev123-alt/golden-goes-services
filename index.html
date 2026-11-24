@@ -100,8 +100,9 @@
         </div>
         <figure class="hero-media mb-0">
           <img
-            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=1400&amp;q=75"
-            srcset="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=800&amp;q=75 800w,
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=1200&amp;q=75"
+            srcset="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=480&amp;q=70 480w,
+                    https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=800&amp;q=75 800w,
                     https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=1400&amp;q=75 1400w"
             sizes="(min-width: 992px) 50vw, 100vw"
             width="1400"
@@ -192,7 +193,11 @@
           <div class="col-lg-6">
             <figure class="why-media mb-0">
               <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;w=1200&amp;q=75"
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;w=1000&amp;q=75"
+                srcset="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;w=480&amp;q=70 480w,
+                        https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w,
+                        https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&amp;fit=crop&amp;w=1200&amp;q=75 1200w"
+                sizes="(min-width: 992px) 48vw, 100vw"
                 width="1200"
                 height="900"
                 alt="Illustrative photo of a clean, modern commercial office interior"
@@ -320,7 +325,7 @@
               <form id="quoteForm" novalidate>
                 <div class="mb-3">
                   <label for="quoteName" class="form-label">Name <span class="text-danger" aria-hidden="true">*</span></label>
-                  <input type="text" class="form-control" id="quoteName" name="name" autocomplete="name" required maxlength="120" aria-describedby="quoteNameFeedback">
+                  <input type="text" class="form-control" id="quoteName" name="name" autocomplete="name" autocapitalize="words" enterkeyhint="next" required maxlength="120" aria-describedby="quoteNameFeedback">
                   <div id="quoteNameFeedback" class="invalid-feedback">Please enter your name.</div>
                 </div>
                 <div class="mb-3">
@@ -354,7 +359,7 @@
                 </div>
                 <div class="mb-4">
                   <label for="quoteDetails" class="form-label">Tell us about your space <span class="fw-normal text-muted">(optional)</span></label>
-                  <textarea class="form-control" id="quoteDetails" name="details" rows="4" maxlength="1000" placeholder="Size, priorities, preferred timing, or anything else we should know." aria-describedby="quoteDetailsHelp"></textarea>
+                  <textarea class="form-control" id="quoteDetails" name="details" rows="4" maxlength="1000" enterkeyhint="done" placeholder="Size, priorities, preferred timing, or anything else we should know." aria-describedby="quoteDetailsHelp"></textarea>
                   <div id="quoteDetailsHelp" class="form-text">Optional details help us prepare a clearer quote.</div>
                 </div>
                 <div class="d-grid gap-2">
