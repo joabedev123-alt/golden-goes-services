@@ -1,10 +1,10 @@
 /**
  * Central contact configuration for Golden Goes Services LLC.
- * Set whatsappNumber to digits only in international format (e.g. "15551234567").
+ * Set smsNumber to digits only in US/international format (e.g. "12145550199" or "2145550199").
  * Add social URLs only when real profiles exist; empty entries are not rendered.
  */
 window.SITE_CONFIG = {
-  whatsappNumber: "",
+  smsNumber: "",
   socialLinks: {
     facebook: "",
     instagram: "",

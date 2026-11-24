@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const config = window.SITE_CONFIG || { whatsappNumber: "", socialLinks: {} };
+  const config = window.SITE_CONFIG || { smsNumber: "", socialLinks: {} };
 
   const form = document.getElementById("quoteForm");
   const nameInput = document.getElementById("quoteName");
@@ -11,7 +11,7 @@
   const submitBtn = document.getElementById("quoteSubmit");
   const copyBtn = document.getElementById("copyQuoteBtn");
   const statusEl = document.getElementById("quoteStatus");
-  const waFloat = document.getElementById("waFloat");
+  const smsFloat = document.getElementById("smsFloat");
   const footerSocial = document.getElementById("footerSocial");
   const footerYear = document.getElementById("footerYear");
   const navCollapseEl = document.getElementById("primaryNav");
@@ -24,13 +24,23 @@
     return String(value || "").replace(/\D/g, "");
   }
 
-  function isWhatsAppConfigured() {
-    const number = digitsOnly(config.whatsappNumber);
-    return number.length >= 10;
+  function getSmsNumber() {
+    const raw = digitsOnly(config.smsNumber || config.phoneNumber || "");
+    if (raw.length === 10) {
+      return "+1" + raw;
+    }
+    if (raw.length >= 11) {
+      return "+" + raw;
+    }
+    return "";
   }
 
-  function getWhatsAppNumber() {
-    return digitsOnly(config.whatsappNumber);
+  function isSmsConfigured() {
+    return getSmsNumber().length >= 12;
+  }
+
+  function isIosDevice() {
+    return /iPad|iPhone|iPod/i.test(navigator.userAgent || "");
   }
 
   function buildQuoteMessage() {
@@ -54,8 +64,13 @@
     return message;
   }
 
-  function buildWhatsAppUrl(message) {
-    return "https://wa.me/" + getWhatsAppNumber() + "?text=" + encodeURIComponent(message);
+  function buildSmsUrl(message) {
+    const number = getSmsNumber();
+    if (!message) {
+      return "sms:" + number;
+    }
+    const separator = isIosDevice() ? "&" : "?";
+    return "sms:" + number + separator + "body=" + encodeURIComponent(message);
   }
 
   function hideStatus() {
@@ -70,24 +85,26 @@
   }
 
   function syncQuoteUiMode() {
-    const configured = isWhatsAppConfigured();
+    const configured = isSmsConfigured();
 
     if (configured) {
-      submitBtn.textContent = "Continue to WhatsApp";
+      submitBtn.textContent = "Send Quote via Text Message";
       submitBtn.classList.remove("d-none");
       copyBtn.classList.add("d-none");
-      waFloat.hidden = false;
-      waFloat.classList.add("is-visible");
-      waFloat.href = "https://wa.me/" + getWhatsAppNumber();
-      waFloat.setAttribute("target", "_blank");
-      waFloat.setAttribute("rel", "noopener noreferrer");
+      if (smsFloat) {
+        smsFloat.hidden = false;
+        smsFloat.classList.add("is-visible");
+        smsFloat.href = buildSmsUrl("");
+      }
     } else {
-      submitBtn.textContent = "Continue to WhatsApp";
+      submitBtn.textContent = "Send Quote via Text Message";
       submitBtn.classList.remove("d-none");
       copyBtn.classList.remove("d-none");
-      waFloat.hidden = true;
-      waFloat.classList.remove("is-visible");
-      waFloat.removeAttribute("href");
+      if (smsFloat) {
+        smsFloat.hidden = true;
+        smsFloat.classList.remove("is-visible");
+        smsFloat.removeAttribute("href");
+      }
     }
   }
 
@@ -189,7 +206,7 @@
       if (copied) {
         showStatus(
           "success",
-          "<strong>Quote request copied.</strong> WhatsApp contact will be available soon. Paste the message when you are ready to send it."
+          "<strong>Quote request copied.</strong> Text message contact will be available soon. Paste the message when you are ready to send it."
         );
       } else {
         throw new Error("copy failed");
@@ -197,7 +214,7 @@
     } catch (err) {
       showStatus(
         "fallback",
-        "<p class=\"mb-1\"><strong>WhatsApp contact will be available soon.</strong></p>" +
+        "<p class=\"mb-1\"><strong>Text message contact will be available soon.</strong></p>" +
           "<p class=\"mb-2\">We could not copy automatically. Select and copy the text below:</p>" +
           "<pre class=\"quote-preview-text\" tabindex=\"0\">" +
           escapeHtml(message) +
@@ -226,19 +243,19 @@
 
     const message = buildQuoteMessage();
 
-    if (isWhatsAppConfigured()) {
-      const url = buildWhatsAppUrl(message);
-      window.open(url, "_blank", "noopener,noreferrer");
+    if (isSmsConfigured()) {
+      const url = buildSmsUrl(message);
+      window.location.href = url;
       showStatus(
         "success",
-        "Your quote request is ready in WhatsApp. Review the message and send it when you are ready — nothing is sent automatically."
+        "Your quote request is ready in your Messages app. Review the text and send it when you are ready — nothing is sent automatically."
       );
       return;
     }
 
     showStatus(
       "info",
-      "<strong>WhatsApp contact will be available soon.</strong> Use <em>Copy Quote Request</em> to save your message, or keep browsing the preview."
+      "<strong>Text message contact will be available soon.</strong> Use <em>Copy Quote Request</em> to save your message, or keep browsing the preview."
     );
   }
 
