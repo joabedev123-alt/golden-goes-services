@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="faviconTitle">
+  <title id="faviconTitle">Golden Goes</title>
+  <defs>
+    <linearGradient id="goldFav" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5DF96"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#A67C1E"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#062040"/>
+  <circle cx="32" cy="32" r="24" fill="none" stroke="url(#goldFav)" stroke-width="1.5" opacity="0.75"/>
+  <path fill="url(#goldFav)" d="M32 14c-9.9 0-18 8.1-18 18s8.1 18 18 18c6.3 0 11.8-3.3 15-8.3l-4.3-2.7c-2.2 3.5-6.1 5.8-10.7 5.8-6.9 0-12.5-5.6-12.5-12.5S25.1 19.8 32 19.8c3.8 0 7.2 1.7 9.5 4.4l3.9-3.4C42 16.6 37.3 14 32 14z"/>
+  <path fill="url(#goldFav)" d="M31 32.5h14v5h-5v6h-5v-6h-4z"/>
+  <path fill="none" stroke="#F5DF96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M24.5 29.5l7.5-6 7.5 6"/>
+  <path d="M50 11l1.2 2.7 2.7 1.2-2.7 1.2L50 18.8l-1.2-2.7-2.7-1.2 2.7-1.2z" fill="#F5DF96"/>
+</svg>

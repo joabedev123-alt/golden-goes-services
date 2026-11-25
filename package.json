@@ -1,0 +1,9 @@
+{
+  "name": "golden-goes-services",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page for Golden Goes Services LLC",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  }
+}
