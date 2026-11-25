@@ -656,6 +656,18 @@ img {
   font-style: italic;
 }
 
+@media (max-width: 767.98px) {
+  .area-list:not(.is-expanded) li:nth-child(n + 13):not(:last-child) {
+    display: none;
+  }
+}
+
+.area-toggle-btn {
+  min-height: 2.75rem;
+  padding-inline: 1.1rem;
+  font-size: 0.88rem;
+}
+
 @media (min-width: 576px) {
   .area-list {
     gap: 0.42rem;

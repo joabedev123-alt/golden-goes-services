@@ -272,7 +272,7 @@
             <a class="btn btn-primary btn-lg" href="#quote">Request a Quote</a>
           </div>
         </div>
-        <ul class="area-list" aria-label="Texas cities served">
+        <ul class="area-list" id="areaList" aria-label="Texas cities served">
           <li><span class="area-chip">Prosper</span></li>
           <li><span class="area-chip">Celina</span></li>
           <li><span class="area-chip">Frisco</span></li>
@@ -320,6 +320,11 @@
           <li><span class="area-chip">Lancaster</span></li>
           <li><span class="area-chip area-chip--more">and surrounding communities</span></li>
         </ul>
+        <div class="d-md-none mt-3">
+          <button type="button" class="btn btn-outline-light btn-sm area-toggle-btn" id="toggleAreasBtn" aria-expanded="false" aria-controls="areaList">
+            View all 45 cities
+          </button>
+        </div>
       </div>
     </section>
 

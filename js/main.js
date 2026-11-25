@@ -15,6 +15,8 @@
   const footerSocial = document.getElementById("footerSocial");
   const footerYear = document.getElementById("footerYear");
   const navCollapseEl = document.getElementById("primaryNav");
+  const areaList = document.getElementById("areaList");
+  const toggleAreasBtn = document.getElementById("toggleAreasBtn");
 
   if (footerYear) {
     footerYear.textContent = String(new Date().getFullYear());
@@ -339,4 +341,12 @@
   syncQuoteUiMode();
   renderSocialLinks();
   initNavCloseOnSelect();
+
+  if (areaList && toggleAreasBtn) {
+    toggleAreasBtn.addEventListener("click", function () {
+      const expanded = areaList.classList.toggle("is-expanded");
+      toggleAreasBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
+      toggleAreasBtn.textContent = expanded ? "Show fewer cities" : "View all 45 cities";
+    });
+  }
 })();
